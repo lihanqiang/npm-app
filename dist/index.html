@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>testgulp</title>
+    <link rel="stylesheet" type="text/css" href="./styles/entry.css">
+    <script src="../js/libs.js"></script>
+    <script src="../js/all.js"></script>
+  </head>
+  <body ng-app="myapp">
+    <div ng-controller="myController as ctrl">
+      <h2>Tour Of Heros</h2><span ng-click="ctrl.showDiv1()" class="tabs">Dashboard</span><span ng-click="ctrl.showDiv2()" class="tabs">Heros</span>
+      <div ng-show="hideFlag">
+        <h3>Top Heros</h3>
+        <ul class="first-ul">
+          <li ng-repeat="person in person2">{{person.name}}</li>
+        </ul>
+        <label>搜索 </label>
+        <input type="text" ng-model="searchVal" ng-keyup="ctrl.search()">
+        <div class="searchDiv">
+          <p ng-repeat="searchPerson in searchPersons">{{searchPerson.name}}</p>
+        </div>
+      </div>
+      <div ng-hide="hideFlag">
+        <h1>My Heros</h1>
+        <label>Hero Name:</label>
+        <input type="text" ng-model="inputHero">
+        <button ng-click="ctrl.add()">Add</button>
+        <ul class="secondUl">
+          <li ng-repeat="person in persons"> <span><span>{{person.id}} </span><span>{{person.name}}</span><span ng-click="ctrl.remove(person.id)">x</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
