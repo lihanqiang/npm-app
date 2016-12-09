@@ -1,6 +1,7 @@
 var myApp = angular.module('myapp',[]);
 
 myApp.controller('myController', ['$scope', function($scope) {
+	var countId = 5;
 	$scope.hideFlag = true;
     $scope.persons = [
     	{
@@ -41,7 +42,7 @@ myApp.controller('myController', ['$scope', function($scope) {
     this.add = function() {
         if($scope.inputHero){
             $scope.persons.push({
-                id: $scope.persons.length,
+                id: countId++,
                 name: $scope.inputHero
             })
         }
