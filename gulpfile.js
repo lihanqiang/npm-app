@@ -19,7 +19,8 @@ var path = {
 	assets: ['app/assets'],
 	index: 'app/index.jade',
 	stylesMain: 'app/styles/entry.scss',
-	coffee: ['app/js/index.coffee', 'app/js/**.coffee'],
+	coffee: 'app/js/index.coffee',
+	anotherCoffee: '[app/js/another.coffee]',
 	jsLibs: [
 	    'bower_components/jquery/dist/jquery.js',
 	    'bower_components/angular/angular.js',
@@ -67,6 +68,13 @@ gulp.task('coffee-deploy', function() {
 	.pipe(concat('all.js'))
 	.pipe(gulp.dest(path.dist + '/js'));
 })
+gulp.task('another-coffee-deploy', function() {
+	return gulp.src(path.anotherCoffee)
+	.pipe(plumber())
+	.pipe(coffee())
+	.pipe(concat('another.js'))
+	.pipe(gulp.dest(path.dist + '/js'));
+})
 // gulp.task('concat', function() {
 // 	gulp.src(path.coffee)
 // 	.pipe(plumber())
@@ -86,6 +94,7 @@ gulp.task('watch', function() {
   gulp.watch(path.index, ['index-deploy'])
   gulp.watch(path.stylesMain, ['sass-deploy'])
   gulp.watch(path.coffee, ['coffee-deploy'])
+  gulp.watch(path.anotherCoffee, ['another-coffee-deploy'])
   gulp.watch(["dist/js/all.js","dist/styles/entry.css","dist/index.html"])
     .on("change",livereload.changed)
 });
@@ -94,6 +103,7 @@ gulp.task('watch', function() {
 gulp.task('default', function() {
 	runSequence(
 	[
+		'another-coffee-deploy',
 		'jsLibs-deploy',
 		'copy',
 		'jade-deploy',
