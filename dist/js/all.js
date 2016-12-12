@@ -1,6 +1,47 @@
 
 var myApp = angular.module('myapp',[]);
+myApp.controller("myController", ["$scope", function($scope) {
+    $scope.checkboxModel = {
+        value: false
+    }
+    $scope.checkboxModel2 = {
+        value: false
+    }
+    $scope.checkboxModel3 = {
+        value: false
+    }
+    $scope.persons = [
+        {
+            name: 'Tom',
+            flag: $scope.checkboxModel.value
+        },
+         {
+            name: 'Li',
+            flag: $scope.checkboxModel2.value
+        },
+         {
+            name: 'Bruce',
+            flag: $scope.checkboxModel3.value
+        }
+    ];
+    $scope.arr = [];
+    $scope.func = function() {
+        _.remove($scope.persons, function(item) {
+            console.log(item.flag)
+            return item.flag;
+        })
 
+    }
+
+
+
+}])
+myApp.directive("myCustomer", function() {
+    return {
+        restrict: 'E',
+        templateUrl: './templates/temp1.html'
+    };
+});
 //创建自己的一个服务
 // myApp.factory('myFactory', [function() {
 // 	var countId = 5,
@@ -101,7 +142,7 @@ var myApp = angular.module('myapp',[]);
 //     	search: search
 //     }
 // }])
-myApp.controller('myController', ['$scope', function($scope) {
+// myApp.controller('myController', ['$scope', function($scope) {
 	// myFactory.setData($scope.hideFlag, $scope.inputHero, $scope.searchVal);
 	// console.log(hideFlag)
 	// console.log(inputHero)
@@ -112,71 +153,72 @@ myApp.controller('myController', ['$scope', function($scope) {
 	// this.remove = myFactory.remove;
 	// this.add = myFactory.add;
 	// this.search = myFactory.search;
-	var countId = 5;
-	$scope.hideFlag = true;
-    $scope.persons = [
-    	{
-    		id: 0,
-    		name: 'Narco'
+// 	var countId = 5;
+// 	$scope.hideFlag = true;
+//     $scope.persons = [
+//     	{
+//     		id: 0,
+//     		name: 'Narco'
 
-    	},
-    	{
-    		id: 1,
-    		name: 'Bombasto',
-    	},
-    	{
-    		id: 2,
-    		name: 'Celeritas'
-    	},
-    	{
-    		id: 3,
-    		name: 'Magneta'
-    	},
-    	{
-    		id: 4,
-    		name: 'Mr Li'
-    	}
-    ];
+//     	},
+//     	{
+//     		id: 1,
+//     		name: 'Bombasto',
+//     	},
+//     	{
+//     		id: 2,
+//     		name: 'Celeritas'
+//     	},
+//     	{
+//     		id: 3,
+//     		name: 'Magneta'
+//     	},
+//     	{
+//     		id: 4,
+//     		name: 'Mr Li'
+//     	}
+//     ];
 
-    //显示前四个
-    $scope.person2 = _.slice($scope.persons, 0, 4);
+//     //显示前四个
+//     $scope.person2 = _.slice($scope.persons, 0, 4);
+
     
-    //显示与隐藏
-    this.showDiv1 = function() {
-		$scope.hideFlag = true;
-    };
-    this.showDiv2 = function() {
-		$scope.hideFlag = false;
-    };
+//     //显示与隐藏
+//     this.showDiv1 = function() {
+// 		$scope.hideFlag = true;
+//     };
+//     this.showDiv2 = function() {
+// 		$scope.hideFlag = false;
+//     };
 
-    //删除的
-    this.remove = function(personId) {
-        _.remove($scope.persons, function(item) {
-            return item.id == personId;
-        })
-    }
+//     //删除的
+//     this.remove = function(personId) {
+//         _.remove($scope.persons, function(item) {
+//             return item.id == personId;
+//         })
+//     }
 
-    //增加的
-    this.add = function() {
-        if($scope.inputHero){
-            $scope.persons.push({
-                id: countId++,
-                name: $scope.inputHero
-            })
-        }
-    }
+//     //增加的
+//     this.add = function() {
+//         if($scope.inputHero){
+//             $scope.persons.push({
+//                 id: countId++,
+//                 name: $scope.inputHero
+//             })
+//         }
+//     }
 
-    //搜索的
-    this.search = function() {
-        var searchPersons = [];
-        var val = $scope.searchVal.toLowerCase();
-        for(var i = 0, length = $scope.persons.length; i < length; i++){
-            var eachItem = $scope.persons[i];
-            if(eachItem.name.toLowerCase().indexOf(val) > -1){
-                searchPersons.push(eachItem);
-            } 
-        } 
-        val?$scope.searchPersons = searchPersons:$scope.searchPersons=[];
-    }
-}
-]);
+//     //搜索的
+//     this.search = function() {
+//         var searchPersons = [];
+//         var val = $scope.searchVal.toLowerCase();
+//         for(var i = 0, length = $scope.persons.length; i < length; i++){
+//             var eachItem = $scope.persons[i];
+//             if(eachItem.name.toLowerCase().indexOf(val) > -1){
+//                 searchPersons.push(eachItem);
+//             } 
+//         } 
+//         val?$scope.searchPersons = searchPersons:$scope.searchPersons=[];
+//     }
+// }
+// ]);

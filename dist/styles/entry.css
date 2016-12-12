@@ -29,6 +29,9 @@ div h3 {
   text-align: center;
   line-height: 30px; }
 
+.checkboxDiv {
+  padding: 20px; }
+
 .ng-hide {
   display: none; }
 
