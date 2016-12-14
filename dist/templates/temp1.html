@@ -1,2 +1,8 @@
 <!-- <span>[{{checkboxModel.value}} {{checkboxModel2.value}} {{checkboxModel3.value}}]</span> -->
-<span>{{personsArr}}</span>
+<!-- <span>{{personsArr}}</span> -->
+<ul class="add-ul-head-wrap">
+	<li ng-repeat="li in lists" class="add-inner-li">{{li.content}}</li>
+</ul>
+<div class="content-wrap">
+	<div ng-repeat="li in lists" class="content-inner">{{li.content}}</div>
+</div>

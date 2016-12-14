@@ -25,6 +25,17 @@
     background: #eee;
     color: #607D8B; }
 
+.add-ul-head-wrap {
+  width: 400px;
+  height: 30px;
+  overflow: hidden;
+  display: flex; }
+
+.add-ul-head-wrap li {
+  float: left;
+  list-style: none;
+  flex: 1; }
+
 div h3 {
   text-align: center;
   line-height: 30px; }

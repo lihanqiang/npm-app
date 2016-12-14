@@ -1,41 +1,85 @@
 
 var myApp = angular.module('myapp',[]);
-myApp.controller("myController", ["$scope", function($scope) {
-    $scope.persons = [
+// myApp.controller("myController", ["$scope", function($scope) {
+//     $scope.persons = [
+//         {
+//             name: 'Li',
+//             flag: false
+//         },
+//         {
+//             name: 'William',
+//             flag: false
+//         },
+//         {
+//             name: 'Bruce',
+//             flag: false
+//         }
+//     ];
+//     $scope.showName = 'eferge';
+//     $scope.setVal = function(index) {
+//         var thisFlag = $scope.persons[index].flag;
+//         var thisName = $scope.persons[index].name;
+//         $scope.persons[index].flag = !thisFlag;
+//         var personsArr = [];
+//         for(var i = 0; i < $scope.persons.length; i++){
+//             if($scope.persons[i].flag){
+//                 personsArr.push($scope.persons[i].name);
+//             }
+//         }
+//         return $scope.personsArr = personsArr;
+//     }
+// }])
+// myApp.directive("myCustomer", function() {
+//     return {
+//         restrict: 'E',
+//         replce: true,
+//         templateUrl: './templates/temp1.html'
+//     };
+// });
+// myApp.directive('showDirec', function() {
+//     return {
+//         // restrict: 'E',
+//         // transclude: true,
+//         scope: {
+//             show: '='
+//         },
+//         template: '<p>{{showName}}</p>',
+//         link: function(scope) {
+//             scope.showName = '34534534'
+//         }
+//     }
+// })
+myApp.controller('contro', ['$scope', function($scope) {
+    $scope.lists = [
         {
-            name: 'Li',
-            flag: false
+            content: 'first',
+            color: 'red'
         },
         {
-            name: 'William',
-            flag: false
+            content: 'second',
+            color: 'green'
         },
         {
-            name: 'Bruce',
-            flag: false
+            content: 'third',
+            color: 'blue'
         }
     ];
-    
-    $scope.setVal = function(index) {
-        var thisFlag = $scope.persons[index].flag;
-        var thisName = $scope.persons[index].name;
-        $scope.persons[index].flag = !thisFlag;
-        var personsArr = [];
-        for(var i = 0; i < $scope.persons.length; i++){
-            if($scope.persons[i].flag){
-                personsArr.push($scope.persons[i].name);
-            }
-        }
-        return $scope.personsArr = personsArr;
-    }
+    $scope.xxx = "453"
 }])
-myApp.directive("myCustomer", function() {
+myApp.directive('myShower', function() {
     return {
         restrict: 'E',
-        replce: true,
-        templateUrl: './templates/temp1.html'
-    };
-});
+        replace: true,
+        // transclude: true,
+        templateUrl: './templates/temp2.html',
+        link: function(scope, elem, attrs) {
+            console.log(scope.lists)
+            scope.xxx = "ddd"
+        }
+    }
+})
+
+
 //创建自己的一个服务
 // myApp.factory('myFactory', [function() {
 // 	var countId = 5,

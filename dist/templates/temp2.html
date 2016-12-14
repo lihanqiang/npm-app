@@ -1,0 +1,9 @@
+<div>
+	<ul class="add-ul-head-wrap">
+		<li ng-repeat="li in lists" class="add-inner-li">{{li.content}}</li>
+	</ul>
+	<div class="content-wrap">
+		<div ng-repeat="li in lists" class="content-inner">{{li.content}}</div>
+	</div>
+	<div ng-transclude></div>
+</div>

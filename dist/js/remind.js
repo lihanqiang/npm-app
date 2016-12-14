@@ -1,3 +1,6 @@
+View(视图), 即 HTML。
+Model(模型), 当前视图中可用的数据。
+Controller(控制器), 即 JavaScript 函数，可以添加或修改属性。业务逻辑
 angular的directive的指令：
 1.var app = angular.module("myApp", []);
 app.controller("myController", ['$scope', function($scope) {
@@ -10,6 +13,7 @@ app.directive("myDirective", function() { //组件名称和回调函数
 	//  template: function() {
 	//		return '<span>{{xx}}</span>'
 	//	},
+		transclude: true,
 		templateUrl: '../app/template.html',//当拼接的字符串较多时，templateUrl会指向一个模板文件
 		priority: [number], //一个dom上有多个指令时，需要用到
 		replace: true/false //是否替换掉生成的指令标签，true的话，会替换
