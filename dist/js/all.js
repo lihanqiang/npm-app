@@ -1,44 +1,38 @@
 
 var myApp = angular.module('myapp',[]);
 myApp.controller("myController", ["$scope", function($scope) {
-    $scope.checkboxModel = {
-        value: false
-    }
-    $scope.checkboxModel2 = {
-        value: false
-    }
-    $scope.checkboxModel3 = {
-        value: false
-    }
     $scope.persons = [
         {
-            name: 'Tom',
-            flag: $scope.checkboxModel.value
-        },
-         {
             name: 'Li',
-            flag: $scope.checkboxModel2.value
+            flag: false
         },
-         {
+        {
+            name: 'William',
+            flag: false
+        },
+        {
             name: 'Bruce',
-            flag: $scope.checkboxModel3.value
+            flag: false
         }
     ];
-    $scope.arr = [];
-    $scope.func = function() {
-        _.remove($scope.persons, function(item) {
-            console.log(item.flag)
-            return item.flag;
-        })
-
+    
+    $scope.setVal = function(index) {
+        var thisFlag = $scope.persons[index].flag;
+        var thisName = $scope.persons[index].name;
+        $scope.persons[index].flag = !thisFlag;
+        var personsArr = [];
+        for(var i = 0; i < $scope.persons.length; i++){
+            if($scope.persons[i].flag){
+                personsArr.push($scope.persons[i].name);
+            }
+        }
+        return $scope.personsArr = personsArr;
     }
-
-
-
 }])
 myApp.directive("myCustomer", function() {
     return {
         restrict: 'E',
+        replce: true,
         templateUrl: './templates/temp1.html'
     };
 });

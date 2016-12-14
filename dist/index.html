@@ -10,17 +10,9 @@
     <div ng-controller="myController as ctrl">
       <h2>Tour Of Heros</h2>
       <div class="checkboxDiv">
-        <p>
-          <input type="checkbox" id="checkbox1" ng-click="func()" ng-model="checkboxModel.value">
-          <label for="checkbox1">Tom </label>
-        </p>
-        <p>
-          <input type="checkbox" id="checkbox2" ng-click="func()" ng-model="checkboxModel2.value">
-          <label for="checkbox2">Li</label>
-        </p>
-        <p>
-          <input type="checkbox" id="checkbox3" ng-click="func()" ng-model="checkboxModel3.value">
-          <label for="checkbox3">Bruce</label>
+        <p ng-repeat="person in persons">
+          <input type="checkbox" ng-change="setVal($index)" ng-model="inputValue">
+          <label>{{person.name}}</label>
         </p>
         <my-customer></my-customer>
       </div><span ng-click="ctrl.showDiv1()" class="tabs">Dashboard</span><span ng-click="ctrl.showDiv2()" class="tabs">Heros</span>

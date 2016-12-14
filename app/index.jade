@@ -9,15 +9,9 @@ html
 		div(ng-controller="myController as ctrl")
 			h2 Tour Of Heros
 			div.checkboxDiv
-				p
-					input(type='checkbox')(id="checkbox1")(ng-click='func()')(ng-model='checkboxModel.value')
-					label(for='checkbox1') Tom 
-				p
-					input(type='checkbox')(id="checkbox2")(ng-click='func()')(ng-model='checkboxModel2.value')
-					label(for='checkbox2') Li
-				p
-					input(type='checkbox')(id="checkbox3")(ng-click='func()')(ng-model='checkboxModel3.value')
-					label(for='checkbox3') Bruce
+				p(ng-repeat='person in persons')
+					input(type='checkbox')(ng-change='setVal($index)')(ng-model='inputValue')
+					label {{person.name}}
 				my-customer
 			span.tabs(ng-click='ctrl.showDiv1()') Dashboard
 			span.tabs(ng-click='ctrl.showDiv2()') Heros
