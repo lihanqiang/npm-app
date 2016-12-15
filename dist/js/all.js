@@ -64,17 +64,45 @@ myApp.controller('contro', ['$scope', function($scope) {
             color: 'blue'
         }
     ];
-    $scope.xxx = "453"
+    
+     $scope.addClass = function(index) {
+        // if(index == 0){
+        //     return {red: true};
+        // }
+        // else if(index == 1){
+        //     return {green: true}
+        // }
+        // else{
+        //     return {blue: true}
+        // }
+        switch (index) {
+            case 0: {
+                return {red: true};
+            };
+            case 1: {
+                return {green: true};
+            };
+            case 2: {
+                return {blue: true};
+            }
+        }
+     }  
+
 }])
 myApp.directive('myShower', function() {
     return {
         restrict: 'E',
         replace: true,
-        // transclude: true,
         templateUrl: './templates/temp2.html',
         link: function(scope, elem, attrs) {
-            console.log(scope.lists)
-            scope.xxx = "ddd"
+            var move = function(dom,num) {
+                dom.animate({
+                    marginLeft: -num * 600
+                });
+            }
+            scope.animate = function(index) {
+               move(elem.find(".content-wrap-inner"),index);
+            }
         }
     }
 })

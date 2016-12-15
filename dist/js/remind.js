@@ -5,6 +5,7 @@ angular的directive的指令：
 1.var app = angular.module("myApp", []);
 app.controller("myController", ['$scope', function($scope) {
 	.........              这里写业务逻辑；
+	
 }])
 app.directive("myDirective", function() { //组件名称和回调函数
 	return {                            //返回一个指令对象

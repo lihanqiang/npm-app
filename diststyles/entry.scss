@@ -45,6 +45,7 @@
 	width: 600px;
 	height: 30px;
 	overflow: hidden;
+	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 	line-height: 30px;
@@ -52,8 +53,9 @@
 .add-ul-head-wrap li{
 	float: left;
 	list-style: none;
-	-ms-flex: 1;
-	flex: 1;
+	-webkit-box-flex: 1;
+	    -ms-flex: 1;
+	        flex: 1;
 	text-align: center;
 	cursor: pointer;
 }

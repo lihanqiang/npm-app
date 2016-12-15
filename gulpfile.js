@@ -9,6 +9,7 @@ var gulp = require("gulp"),
 	clean = require("gulp-clean"),
 	runSequence = require('run-sequence'),
 	watch = require('gulp-watch'),
+	autoprefixer = require('gulp-autoprefixer'),
 	webserver = require('gulp-webserver');
 //定义各个目录
 
@@ -41,6 +42,15 @@ gulp.task('jsLibs-deploy', function() {
 	.pipe(concat('libs.js'))
 	.pipe(gulp.dest(path.dist + '/js'));
 })
+gulp.task('autoprefixer', function() {
+	return gulp.src(path.stylesMain)
+	.pipe(plumber())
+ 	.pipe(autoprefixer({
+        browsers: ['last 2 versions'],
+        cascade: false
+	}))
+	.pipe(gulp.dest('app/styles'));
+})
 gulp.task('jade-deploy', function() {
 	return gulp.src(path.jade)
 	.pipe(plumber())
@@ -58,7 +68,7 @@ gulp.task('index-deploy', function() {
 gulp.task('sass-deploy', function() {
 	return gulp.src(path.stylesMain)
 	.pipe(plumber())
-	.pipe(sass())
+	.pipe(sass({outputStyle: 'expanded'}))
 	.pipe(gulp.dest(path.dist + '/styles'));
 })
 gulp.task('coffee-deploy', function() {
@@ -108,6 +118,7 @@ gulp.task('default', function() {
 		'copy',
 		'jade-deploy',
 		'index-deploy',
+		'autoprefixer',
 		'sass-deploy'
 	],
 	'webserver',

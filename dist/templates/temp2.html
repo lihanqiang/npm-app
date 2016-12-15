@@ -1,9 +1,10 @@
-<div>
+<div class="all-wrap">
 	<ul class="add-ul-head-wrap">
-		<li ng-repeat="li in lists" class="add-inner-li">{{li.content}}</li>
+		<li ng-repeat="li in lists" ng-class='addClass($index)' ng-click='animate($index)' class="add-inner-li">{{li.content}}</li>
 	</ul>
 	<div class="content-wrap">
-		<div ng-repeat="li in lists" class="content-inner">{{li.content}}</div>
+		<div class="content-wrap-inner">
+			<div ng-repeat="li in lists" ng-class='addClass($index)' class="content-inner">{{li.content}}</div>
+		</div>
 	</div>
-	<div ng-transclude></div>
 </div>
