@@ -49,7 +49,7 @@ var myApp = angular.module('myapp',[]);
 //         }
 //     }
 // })
-myApp.controller('contro', ['$scope', function($scope) {
+myApp.controller('contro', ['$scope','$http', function($scope, $http) {
     $scope.lists = [
         {
             content: 'first',
@@ -65,6 +65,15 @@ myApp.controller('contro', ['$scope', function($scope) {
         }
     ];
     
+    // $http
+    $http.get('/jsonFolder/test.json').then(function(response) {
+            console.log(response.data);
+            var arr = [1, 2, 3];
+            var mapData = _.map(arr, function(item, i) {
+                return item * item
+            })
+            console.log(mapData)
+    })
      $scope.addClass = function(index) {
         // if(index == 0){
         //     return {red: true};

@@ -18,6 +18,7 @@ var path = {
 	dist: 'dist',
 	jade: ['app/pages/**.jade'],
 	assets: ['app/assets'],
+	jsonFolder: ['app/jsonFolder/test.json'],
 	index: 'app/index.jade',
 	stylesMain: 'app/styles/entry.scss',
 	coffee: 'app/js/index.coffee',
@@ -33,8 +34,8 @@ gulp.task('clean', function() {
 	.pipe(clean());
 })
 gulp.task('copy', function() {
-	return gulp.src(path.assets)
-		.pipe(gulp.dest(path.dist));
+	return gulp.src(path.jsonFolder)
+		.pipe(gulp.dest(path.dist + '/jsonFolder'));
 })
 gulp.task('jsLibs-deploy', function() {
 	return gulp.src(path.jsLibs)
@@ -96,7 +97,7 @@ gulp.task('webserver', function(){
 		.pipe(webserver({
 			livereload: true,
 			open: true,
-			portt: 4000
+			port: 4000
 		}))
 })
 gulp.task('watch', function() {

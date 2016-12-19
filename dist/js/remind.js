@@ -24,3 +24,12 @@ app.directive("myDirective", function() { //组件名称和回调函数
 
 	}
 })
+
+
+//
+'/'表示web根目录
+'./' 和不写不是当前目录
+'../'上级目录
+
+
+
